@@ -46,3 +46,24 @@ class MovieDetailView(View):
             for key, value in movies[movie_name].items()
         )
         return HttpResponse(f'<table><tbody>{movie_info}</tbody></table>')
+
+
+class ProducerView(View):
+    def get(self, request, year=1979, month=12):
+        return HttpResponse(f'Producer {year} {month}')
+
+
+# class FilmView(View):
+#     def get(self, request, film_id):
+#
+#         data = {
+#             'film': films[film_id],
+#         }
+#
+#         return render(request, 'film.html', context=data)
+
+
+class FilmView(View):
+    def get(self, request):
+        producer_id = request.GET.get('producer_id', '')
+        artist_id = request.GET.get('artist_id', '')
